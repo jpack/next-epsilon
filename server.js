@@ -161,6 +161,11 @@ io.sockets.on('connect', function(socket){
         console.log("Note Recieved");
         pushNote(JSONNote);
     });
+
+    socket.on('getTracks', function(){
+       console.log("getTracks!");
+        io.emit('allTracks', tracks);
+    });
 });
 
 
