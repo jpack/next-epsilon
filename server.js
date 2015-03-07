@@ -24,7 +24,7 @@ app.get('/display', function(req, res) {
 
 // POST Handlers =================
 
-app.post('/getTracks', function(req, res){
+app.get('/getTracks', function(req, res){
     res.send(tracks);
 });
 
