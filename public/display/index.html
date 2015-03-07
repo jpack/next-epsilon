@@ -181,10 +181,10 @@
 			}
 
 			function onDocumentMouseDown(event) {
-				cameraDist -= 1000;
-				if (cameraDist < 0) {
-					cameraDist = 0;
-				}			
+				//cameraDist -= 1000;
+				//if (cameraDist < 0) {
+				//	cameraDist = 0;
+				//}			
 
 			}
 
@@ -248,9 +248,7 @@
 					fps = frames;
 					frames = 0;
 					frameStartTime = dateTime.getTime();
-				}
-
-				document.title = fps;
+				}				
 
 				cameraAngle += .5;
 				if (cameraAngle >= 360) {
