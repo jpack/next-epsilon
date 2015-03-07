@@ -20,7 +20,7 @@ nextEpsilon.controller('SequencerCtrl', function ($scope, $http) {
 
     $scope.saveSequence = function(){
         var trackTemplate = {
-            sampleId: $scope.sampleId,
+            sampleId: $scope.instrumentId,
             isRecording: false,
             offset: 0,
             resolution: 1,
