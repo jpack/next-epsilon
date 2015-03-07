@@ -1,30 +1,35 @@
-<nav class="navbar navbar-inverse navbar-static-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">NE</a>
-        </div>
-
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="#/sequencer"><span class="glyphicon glyphicon-plus"></span></a></li>
-        </ul>
-    </div>
-</nav>
+<link rel="stylesheet" href="css/tracks.css">
 <div class="container-fluid">
     <div id="tracks" class="row">
         <div class="col-sm-12" ng-repeat="track in tracks">
             <div class="row">
                 <div class="col-sm-10 col-sm-offset-1">
-                    <h1>test</h1>
+
+                    <div class="container-fluid text-center track" ng-class="{open:open}">
+                        <div class="gear" ng-click="openSettings(this)" ng-class="{open: open}">
+                            <img src="img/gear.png">
+                        </div>
+                        <div class="row" ng-repeat="pitch in measure" ng-init="i = $index">
+                            <div class="col-sm-12">
+                                <div class="sequencer-button" ng-repeat="note in measure[i] track by $index" ng-click="note.active = !note.active" ng-class="{bright: note.active}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings">
+                            <p>Volume</p>
+                            <input type="range" class="custom"/>
+                            <button class="btn">Delete</button>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<div class="addbtn">
+   <h1>+</h1>
 </div>

@@ -46,3 +46,11 @@ body{
 .bright{
     background-color: yellow;
 }
+
+#bg1 {
+    width: 80%;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+}
+
