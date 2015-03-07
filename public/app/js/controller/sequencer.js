@@ -1,8 +1,9 @@
 nextEpsilon.controller('SequencerCtrl', function ($scope, $http) {
+    $scope.sampleId = 0;
     $scope.offset = 0;
     $scope.currMeasure = 0;
     $scope.measures = [];
-    $scope.repeat = false;
+    $scope.repeat = 1;
 
     var createMeasure = function(){
         // 8 pitches per measure
@@ -36,11 +37,9 @@ nextEpsilon.controller('SequencerCtrl', function ($scope, $http) {
         $scope.currMeasure--;
     };
 
-    $scope.measures[$scope.currMeasure] = createMeasure();
-
     $scope.saveSequence = function(){
         var trackTemplate = {
-            sampleId: 0,
+            sampleId: $scope.sampleId,
             isRecording: false,
             offset: $scope.offset,
             resolution: 1,
@@ -59,5 +58,11 @@ nextEpsilon.controller('SequencerCtrl', function ($scope, $http) {
         }
 
         $http.post('/addTrack', trackTemplate);
-    }
+    };
+
+    $scope.setInstrument = function(intstrumentId){
+        $scope.sampleId = intstrumentId;
+    };
+
+    $scope.measures[$scope.currMeasure] = createMeasure();
 });
