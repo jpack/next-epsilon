@@ -33,13 +33,20 @@
 
 		<script>
 
+			var dateTime = new Date();
+			
 			var SCREEN_WIDTH = window.innerWidth,
 			SCREEN_HEIGHT = window.innerHeight,
 
+			frameStartTime = dateTime.getTime(),
+			frameCurrentTime = dateTime.getTime(),
+			
 			mouseX = 0, mouseY = 0,
 			cameraDist = 200,
 			cameraAngle = 0,
 			RAD = 180 / 3.14159265,
+			fps = 0,
+			frames = 0,
 
 			windowHalfX = window.innerWidth / 2,
 			windowHalfY = window.innerHeight / 2,
@@ -231,6 +238,19 @@
 
 				//camera.position.x += ( mouseX - camera.position.x ) * .05;
 				//camera.position.y += ( - mouseY + 200 - camera.position.y ) * .05;
+
+				frames += 1;
+				var dateTime = new Date();
+
+				frameCurrentTime = dateTime.getTime();
+
+				if ((frameCurrentTime - frameStartTime) >= 1000) {
+					fps = frames;
+					frames = 0;
+					frameStartTime = dateTime.getTime();
+				}
+
+				document.title = fps;
 
 				cameraAngle += .5;
 				if (cameraAngle >= 360) {
