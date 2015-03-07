@@ -149,9 +149,11 @@ function pushNote(JSONNote){
 
 // Socket IO =================
 
-io.on('volume', function(volume){
-    console.log("pushed volume change");
-    io.emit('volumeChange', volume);
+io.sockets.on('connect', function(socket){
+    socket.on('volume', function(volume){
+        console.log("pushed volume change");
+        io.emit('volumeChange', volume);
+    });
 });
 
 //Listens for noteSend on a socket, then calls pushNote with it.

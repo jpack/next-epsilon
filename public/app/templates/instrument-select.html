@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="css/tracks.css">
+
+<div class="container-fluid" id="maindiv" ng-class="{enter:enter}">
+    <div id="tracks" class="row">
+        <div class="col-xs-10 col-xs-offset-1" ng-repeat="track in tracks">
+            <div class="row track" ng-class="{open:open}">
+                <div class="col-xs-11">
+
+                    <div class="container-fluid text-center" ng-class="{open:open}">
+                        <div class="row" ng-repeat="pitch in measure" ng-init="i = $index">
+                            <div class="col-sm-12 note-row">
+                                <div class="sequencer-button" ng-repeat="note in measure[i] track by $index" ng-click="note.active = !note.active" ng-class="{bright: note.active}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="settings">
+                                <p>Volume{{track.volume}}</p>
+                                <input type="range" ng-model="track.volume" ng-change="volumeChange(track)" class="custom "/>
+                                <button class="btn">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-1">
+                    <div class="gear" ng-click="openSettings(this)" ng-class="{open: open}">
+                        <img src="img/gear.png">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div>
+        <h1 ng-if="tracks.length == 0">No Tracks found. Tap the button below to add a new track.</h1>
+    </div>
+</div>
+
+<div class="addbtn" ng-class="{enter:enter}">
+    <a href="#/sequencer"><h1>+</h1></a>
+</div>
