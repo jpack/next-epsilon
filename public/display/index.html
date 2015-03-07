@@ -48,6 +48,11 @@
 			fps = 0,
 			frames = 0,
 
+			pulseAmount = 25000,
+			retractAmount = 5000,
+			maxZoom = 500,
+			minZoom = 2500,
+
 			windowHalfX = window.innerWidth / 2,
 			windowHalfY = window.innerHeight / 2,
 
@@ -55,8 +60,9 @@
 			AMOUNTX = 10,
 			AMOUNTY = 10,
 
-			camera, scene, renderer;
+			camera, scene, background, renderer;
 
+			
 
 			init();
 			animate();
@@ -73,6 +79,7 @@
 				camera.position.z = cameraDist;
 
 				scene = new THREE.Scene();
+				background = new THREE.Scene();
 
 				renderer = new THREE.CanvasRenderer();
 				renderer.setPixelRatio( window.devicePixelRatio );
@@ -173,20 +180,18 @@
 			}
 
 			function pulse() {
-				cameraDist -= 50000 / fps;
-				if (cameraDist < 0) {
-					cameraDist = 0;
+				cameraDist -= pulseAmount / fps;
+				if (cameraDist < maxZoom) {
+					cameraDist = maxZoom;
 				}
 				
 			}
 
 			function onDocumentMouseDown(event) {
-				cameraDist -= 1000;
-				if (cameraDist < 0) {
-					cameraDist = 0;
-				}			
-
+				pulse();			
 			}
+
+			
 
 			function onDocumentMouseMove(event) {
 
@@ -231,9 +236,9 @@
 				requestAnimationFrame( animate );
 
 				render();
-				cameraDist += 5000 / fps;
-				if (cameraDist > 2000) {
-					cameraDist = 2000;
+				cameraDist += retractAmount / fps;
+				if (cameraDist > minZoom) {
+					cameraDist = minZoom;
 				}
 				//camera.position.z = cameraDist;
 			}
@@ -267,6 +272,9 @@
 
 				camera.lookAt( scene.position );
 
+				//renderer.clear();
+				//renderer.render( background, camera );
+				//renderer.clearDepth();
 				renderer.render( scene, camera );
 
 			}
