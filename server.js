@@ -5,6 +5,7 @@ var io = require('socket.io')(server);
 var tracks = [];
 var bodyParser = require('body-parser');
 
+
 // configuration =================
 app.use(express.static('public'));
 
@@ -13,22 +14,26 @@ app.use(bodyParser.json());
 
 //Handles get requests for /app, redirects to the app itself
 app.get('/app', function(req, res) {
-    res.sendfile('./public/app/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+    res.sendFile('./public/app/index.html'); // load the single view file (angular will handle the page changes on the front-end)
 });
 
 //Handles get requests for /display, redirects to the display part of the app.
 app.get('/display', function(req, res) {
-    res.sendfile('./public/display/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+    res.sendFile('./public/display/index.html'); // load the single view file (angular will handle the page changes on the front-end)
 });
 
 // POST Handlers =================
 
+app.post('/getTracks', function(req, res){
+    res.send(tracks);
+});
+
 //Handles post requests for adding tracks.
 app.post('/addTrack', function(req,res){
-   console.log(req.body.ID);
+   console.log(req.body);
     addTrack(req.body);
-    pushAdd(res.body);
-    res.send("Received");
+    pushAdd(req.body);
+    res.send(req.body);
 });
 
 //Handles post requests for getting tracks, and send the track back.
@@ -42,7 +47,7 @@ app.post('/getTrack', function(req,res){
 app.post('/deleteTrack', function(req, res){
    console.log(req.body.ID);
     deleteTrack(req.body);
-    pushDelete(res.body);
+    pushDelete(req.body);
     res.send("Deleted");
 });
 
@@ -50,7 +55,7 @@ app.post('/deleteTrack', function(req, res){
 app.post('/updateTrack', function(req, res){
    console.log(req.body.ID);
     updateTrack(req.body);
-    pushUpdate(res.body);
+    pushUpdate(req.body);
     res.send("Updated");
 });
 

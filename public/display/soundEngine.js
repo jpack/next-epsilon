@@ -18,6 +18,7 @@ bufferLoader = new BufferLoader(
 );
 
 var tracks = [{
+    ID: 0,
     sampleId: 0,
     isRecording: false,
     offset: 0,
@@ -40,6 +41,7 @@ var tracks = [{
     ]
 },
     {
+        ID: 1,
     sampleId: 5,
     isRecording: false,
     offset: 0,
@@ -83,6 +85,7 @@ var tracks = [{
     ]
 },
     {
+        ID: 2,
         sampleId: 4,
         isRecording: false,
         offset: 0,
@@ -108,6 +111,7 @@ var tracks = [{
         ]
     },
     {
+        ID: 3,
         sampleId: 3,
         isRecording: false,
         offset: 0,
@@ -154,8 +158,25 @@ var pitchToSemitones = [
     23,
 ];
 
+function add(Track){
+    tracks.push(Track);
+}
 
+function update(Track){
+    for(var i = 0; i < tracks.length; i++) {
+        if (tracks[i].ID == Track.ID) {
+            tracks[i] = Track;
+        }
+    }
+}
 
+function deleteID(ID){
+    for(var i = 0; i < tracks.length; i++) {
+        if (tracks[i].ID == ID) {
+            tracks.slice(i, 1);
+        }
+    }
+}
 
 function playSound(bufferId, pitch, volume, time) {
 
