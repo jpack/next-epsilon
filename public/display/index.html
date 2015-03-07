@@ -166,20 +166,18 @@
 			}
 
 			function pulse() {
-				cameraDist -= 500;
+				cameraDist -= 1000;
 				if (cameraDist < 0) {
 					cameraDist = 0;
 				}
-				//camera.position.z = cameraDist;
-
+				
 			}
 
 			function onDocumentMouseDown(event) {
-				cameraDist -= 500;
+				cameraDist -= 1000;
 				if (cameraDist < 0) {
 					cameraDist = 0;
-				}
-				//camera.position.z = cameraDist;
+				}			
 
 			}
 
@@ -234,7 +232,7 @@
 				//camera.position.x += ( mouseX - camera.position.x ) * .05;
 				//camera.position.y += ( - mouseY + 200 - camera.position.y ) * .05;
 
-				cameraAngle += 5;
+				cameraAngle += .5;
 				if (cameraAngle >= 360) {
 					cameraAngle -= 360;
 				}
