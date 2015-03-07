@@ -1,13 +1,24 @@
-nextEpsilon.controller('MainMenuCtrl', function ($scope) {
+nextEpsilon.controller('MainMenuCtrl', function ($scope, $http) {
     setTimeout(function() {
         $scope.enter = true;
         $scope.$apply();
     }, 300);
 
-    $scope.tracks = [1, 2, 3, 4, 5];
+    $scope.tracks = [];
 
     // 8 pitches for our interface
     $scope.measure = new Array(8);
+
+    $http.get("/getTracks").success(function(data) {
+         $scope.tracks = data;
+    });
+
+    $scope.volumeChange = function(track) {
+        socket.emit('volume', {
+            id: track.ID,
+            volume: track.volume
+        });
+    }
 
 
     // 16 beats for each measure
@@ -29,5 +40,6 @@ nextEpsilon.controller('MainMenuCtrl', function ($scope) {
             obj.open = !obj.open;
         }
         console.log("abc");
-    }
+    };
+
 });

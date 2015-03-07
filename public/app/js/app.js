@@ -1,5 +1,5 @@
 var nextEpsilon = angular.module('nextEpsilon', ['ngRoute']);
-
+var socket = io();
 nextEpsilon.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.

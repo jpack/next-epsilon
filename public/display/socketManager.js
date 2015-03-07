@@ -12,6 +12,8 @@ socket.on('delete', function(ID){
     deleteID(ID);
 });
 socket.on('note', function(note){
+});
+socket.on('volume', function(note){
     console.log(note);
 });
 socket.on('volumeChange', function(trackVol){
