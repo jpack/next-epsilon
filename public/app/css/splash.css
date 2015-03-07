@@ -1,27 +1,27 @@
 #logo1 {
-    width: 86%;
-    position: relative;
-    left: 50%;
-    top: 20vh;
-    margin-left: -43%;
-}
-#logo2 {
     width: 46%;
     position: relative;
     left: 50%;
-    top: 20vh;
+    top: 10vh;
     margin-left: -23%;
+}
+#logo2 {
+    width: 20%;
+    position: relative;
+    left: 50%;
+    top: 10vh;
+    margin-left: -10%;
 }
 
 #bg1 {
-    width: 100%;
+    width: 80%;
     position: fixed;
     bottom: 0px;
     right: 0px;
 }
 
 p {
-    margin-top: 20vh;
+    margin-top: 10vh;
     text-align:center;
     font-size: 20px;
     color: gray;
