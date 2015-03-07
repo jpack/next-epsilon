@@ -3,17 +3,21 @@ var socket = io.connect();
 
 nextEpsilon.config(['$routeProvider',
     function($routeProvider) {
-        $routeProvider.
-            when('/', {
+        $routeProvider
+            .when('/', {
                 templateUrl: 'templates/splash.html',
                 controller: 'SplashCtrl'
-            }).
-            when('/tracks', {
+            })
+            .when('/tracks', {
                 templateUrl: 'templates/main-menu.html',
                 controller: 'MainMenuCtrl'
-            }).
-            when('/sequencer', {
+            })
+            .when('/sequencer', {
                 templateUrl: 'templates/sequencer.html',
                 controller: 'SequencerCtrl'
+            })
+            .when('/live', {
+            templateUrl: 'templates/live.html',
+            controller: 'LiveCtrl'
             })
     }]);

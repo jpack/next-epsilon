@@ -29,6 +29,11 @@ body{
     border-radius: 5px;
 }
 
+.live-button{
+    text-align: center;
+    background-color: #222;
+}
+
 .bright{
     background-color: yellow;
 }

@@ -1,0 +1,69 @@
+<nav class="navbar navbar-inverse navbar-static-top sequencer-nav">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">NE</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Instrument
+                        Select <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a ng-click="setInstrument(0)">Sweet Drum</a></li>
+                        <li><a ng-click="setInstrument(1)">Hella Bass</a></li>
+                        <li><a ng-click="setInstrument(2)">Phat Synth</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div ng-click="play(7)" class="col-md-12 live-button">
+            <h1>7</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div ng-click="play(6)" class="col-md-12 live-button">
+            <h1>6</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div ng-click="play(5)" class="col-md-12 live-button">
+            <h1>5</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div ng-click="play(4)" class="col-md-12 live-button">
+            <h1>4</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div ng-click="play(3)" class="col-md-12 live-button">
+            <h1>3</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div ng-click="play(2)" class="col-md-12 live-button">
+            <h1>2</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div ng-click="play(1)" class="col-md-12 live-button">
+            <h1>1</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div ng-click="play(0)" class="col-md-12 live-button">
+            <h1>0</h1>
+        </div>
+    </div>
+</div>
