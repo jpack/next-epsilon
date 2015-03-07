@@ -192,6 +192,10 @@ function deleteID(ID){
     }
 }
 
+function playNote(note) {
+    playSound(note.sampleId, note.pitch, 1, context.currentTime + 1.00);
+}
+
 function playSound(bufferId, pitch, volume, time) {
 
     var source = context.createBufferSource();

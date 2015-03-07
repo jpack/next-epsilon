@@ -13,16 +13,9 @@ var tracks = [{
     volume: 1.3,
     notes: [
         {startTime: 0, pitch: 0},
-        {startTime: 2, pitch: 2},
         {startTime: 4, pitch: 0},
-        {startTime: 4, pitch: 1},
-        {startTime: 6, pitch: 2},
         {startTime: 8, pitch: 0},
-        {startTime: 8, pitch: 1},
-        {startTime: 10, pitch: 2},
         {startTime: 12, pitch: 0},
-        {startTime: 12, pitch: 1},
-        {startTime: 14, pitch: 2},
     ]
 }];
 var bodyParser = require('body-parser');

@@ -12,6 +12,7 @@ socket.on('delete', function(ID){
     deleteID(ID);
 });
 socket.on('note', function(note){
+    playNote(note);
 });
 socket.on('volumeChange', function(trackVol){
     console.log(trackVol);
