@@ -1,9 +1,6 @@
 nextEpsilon.controller('SequencerCtrl', function ($scope, $http) {
-    $scope.sampleId = 0;
-    $scope.offset = 0;
-    $scope.currMeasure = 0;
-    $scope.measures = [];
-    $scope.repeat = 1;
+    $scope.instrumentId = 0;
+    $scope.measure = [];
 
     var createMeasure = function(){
         // 8 pitches per measure
@@ -18,40 +15,24 @@ nextEpsilon.controller('SequencerCtrl', function ($scope, $http) {
             }
         }
 
-        return measure
-    };
-
-    $scope.addMeasure = function(){
-        $scope.currMeasure++;
-
-        if($scope.measures[$scope.currMeasure] == null){
-            $scope.measures[$scope.currMeasure] = createMeasure();
-        }
-    };
-
-    $scope.subMeasure = function(){
-        if($scope.currMeasure <= 0){
-            return;
-        }
-
-        $scope.currMeasure--;
+        return measure;
     };
 
     $scope.saveSequence = function(){
         var trackTemplate = {
             sampleId: $scope.sampleId,
             isRecording: false,
-            offset: $scope.offset,
+            offset: 0,
             resolution: 1,
-            repeat: $scope.repeat,
+            repeat: 0,
             lock: false,
             volume: 1,
             notes: []
         };
 
-        for(var i = 0; i < $scope.measures[currMesure].length; i++){
-            for(var j = 0; j < $scope.measures[currMeasure][i].length; j++){
-                if($scope.measures[currMeasure][i][j].active){
+        for(var i = 0; i < $scope.measure.length; i++){
+            for(var j = 0; j < $scope.measure[i].length; j++){
+                if($scope.measure[i][j].active){
                     trackTemplate.notes.push({startTime: 2 * j, pitch: i});
                 }
             }
@@ -60,9 +41,9 @@ nextEpsilon.controller('SequencerCtrl', function ($scope, $http) {
         $http.post('/addTrack', trackTemplate);
     };
 
-    $scope.setInstrument = function(intstrumentId){
-        $scope.sampleId = intstrumentId;
+    $scope.setInstrument = function(instrumentId){
+        $scope.instrumentId = instrumentId;
     };
 
-    $scope.measures[$scope.currMeasure] = createMeasure();
+    $scope.measure = createMeasure();
 });
