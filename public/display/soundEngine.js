@@ -9,6 +9,7 @@ bufferLoader = new BufferLoader(
         'sounds/hihat.ogg',
         'sounds/clap.ogg',
         'sounds/bass01.ogg',
+        'sounds/electric_ping01.ogg',
     ],
     finishedLoading
 );
@@ -18,17 +19,17 @@ var tracks = [{
     isRecording: false,
     offset: 0,
     resolution: 1,
-    repeat: 2,
+    repeat: 0,
     lock: false,
     volume: 1,
     notes: [
-        {startTime: 1, pitch: 0},
-        {startTime: 32, pitch: 0},
-        {startTime: 32, pitch: 1},
-        {startTime: 64, pitch: 0},
-        {startTime: 96, pitch: 0},
-        {startTime: 96, pitch: 1},
-        {startTime: 112, pitch: 2},
+        {startTime: 0, pitch: 0},
+        {startTime: 4, pitch: 0},
+        {startTime: 4, pitch: 1},
+        {startTime: 8, pitch: 0},
+        {startTime: 8, pitch: 0},
+        {startTime: 12, pitch: 1},
+        {startTime: 14, pitch: 2},
     ]
 },
     {
@@ -36,22 +37,52 @@ var tracks = [{
     isRecording: false,
     offset: 0,
     resolution: 1,
-    repeat: 2,
+    repeat: 1,
     lock: false,
     volume: 1,
     notes: [
-        {startTime: 1, pitch: 0},
-        {startTime: 16, pitch: 7},
-        {startTime: 32, pitch: 0},
-        {startTime: 48, pitch: 7},
-        {startTime: 64, pitch: 0},
-        {startTime: 80, pitch: 7},
-        {startTime: 96, pitch: 0},
-        {startTime: 112, pitch: 7},
+        {startTime: 0, pitch: 0},
+        {startTime: 2, pitch: 7},
+        {startTime: 4, pitch: 0},
+        {startTime: 6, pitch: 7},
+        {startTime: 8, pitch: 0},
+        {startTime: 10, pitch: 7},
+        {startTime: 12, pitch: 5},
+        {startTime: 14, pitch: 4},
     ]
+},
+    {
+        sampleId: 2,
+        isRecording: false,
+        offset: 0,
+        resolution: 1,
+        repeat: 0,
+        lock: false,
+        volume: 1,
+        notes: [
+            {startTime: 0, pitch: 7},
+            {startTime: 2, pitch: 6},
+            {startTime: 4, pitch: 2},
+            {startTime: 8, pitch: 7},
+            {startTime: 10, pitch: 5},
+            {startTime: 11, pitch: 5},
+            {startTime: 12, pitch: 5},
+            {startTime: 14, pitch: 0},
+        ]
 }];
 
 bufferLoader.load();
+
+var pitchToSemitones = [
+    0,
+    2,
+    4,
+    5,
+    7,
+    9,
+    11,
+    12,
+];
 
 
 
@@ -60,7 +91,9 @@ function playSound(bufferId, pitch, time) {
 
     var source = context.createBufferSource();
     if (bufferId != 0) {
-        source.buffer = bufferList[bufferId+4];
+        source.buffer = bufferList[bufferId+3];
+        console.log(Math.pow(2, pitchToSemitones[pitch] / 12));
+        source.playbackRate.value = (Math.pow(2, (pitchToSemitones[pitch] / 12)));
     }
     else {
         source.buffer = bufferList[pitch];
@@ -77,7 +110,7 @@ var currentTime = 0;
 var loopStart = 0;
 var scheduledUntil = 0;
 var beat = 1/120 * 1000 * 60; //beat in milliseconds (120 bpm)
-var resolution = 32;
+var resolution = 4;
 
 var loop = function() {
     var time = (context.currentTime + 0.100) * 1000;
@@ -85,19 +118,15 @@ var loop = function() {
     var farthestNote = 0;
 
     tracks.forEach(function(track) {
-        track.notes.forEach(function(note) {
-            var modifiedNoteTime = (note.startTime*(beat/resolution)) + startTime + track.offset + loopStart;
-            if (modifiedNoteTime >= scheduledUntil && modifiedNoteTime < nextSchedule) {
-                playSound(track.sampleId, note.pitch, modifiedNoteTime/1000);
-                if (note.pitch == 2) {
-                    console.log(loopStart);
-                    console.log(modifiedNoteTime);
+            track.notes.forEach(function (note) {
+                var modifiedNoteTime = (note.startTime * (beat / resolution)) + startTime + track.offset + loopStart;
+                if (modifiedNoteTime >= scheduledUntil && modifiedNoteTime < nextSchedule) {
+                    playSound(track.sampleId, note.pitch, modifiedNoteTime / 1000);
                 }
-            }
-            if (modifiedNoteTime > farthestNote) {
-                farthestNote = modifiedNoteTime;
-            }
-        });
+                if (modifiedNoteTime > farthestNote) {
+                    farthestNote = modifiedNoteTime;
+                }
+            });
     });
 
     if (farthestNote < nextSchedule) {
@@ -105,7 +134,6 @@ var loop = function() {
         var tmpNext = Math.floor(nextSchedule);
         var tmpBeat = Math.floor(beat);
         loopStart = (Math.floor(nextSchedule / (beat*4))) * (beat*4);
-        console.log("call")
     }
 
     scheduledUntil = nextSchedule;
