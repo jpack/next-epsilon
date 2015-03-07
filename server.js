@@ -161,7 +161,4 @@ io.sockets.on('connect', function(socket){
     });
 });
 
-
-
 console.log("App listening on port 3000");
-//Added code begins below:
