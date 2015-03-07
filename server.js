@@ -162,7 +162,7 @@ io.sockets.on('connect', function(socket){
         pushNote(JSONNote);
     });
 
-    socket.on('getTracks', function(){
+    socket.on('getTracks', function(nothing){
        console.log("getTracks!");
         io.emit('allTracks', tracks);
     });
