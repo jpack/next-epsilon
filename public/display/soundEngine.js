@@ -194,6 +194,7 @@ function deleteID(ID){
 
 function playNote(note) {
     playSound(note.sampleId, note.pitch, 1, context.currentTime );
+    pulse();
 }
 
 function playSound(bufferId, pitch, volume, time) {
