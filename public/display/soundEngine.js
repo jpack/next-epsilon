@@ -193,7 +193,7 @@ function deleteID(ID){
 }
 
 function playNote(note) {
-    playSound(note.sampleId, note.pitch, 1, context.currentTime + 1.00);
+    playSound(note.sampleId, note.pitch, 1, context.currentTime );
 }
 
 function playSound(bufferId, pitch, volume, time) {

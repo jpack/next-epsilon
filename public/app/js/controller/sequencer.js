@@ -49,9 +49,9 @@ nextEpsilon.controller('SequencerCtrl', function ($scope, $http) {
             notes: []
         };
 
-        for(var i = 0; i < $scope.currMeasure.length; i++){
-            for(var j = 0; j < $scope.currMeasure[i].length; j++){
-                if($scope.currMeasure[i][j]){
+        for(var i = 0; i < $scope.measures[currMesure].length; i++){
+            for(var j = 0; j < $scope.measures[currMeasure][i].length; j++){
+                if($scope.measures[currMeasure][i][j].active){
                     trackTemplate.notes.push({startTime: 2 * j, pitch: i});
                 }
             }
