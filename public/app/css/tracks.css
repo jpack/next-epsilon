@@ -11,14 +11,20 @@
 }
 
 .track.open {
-    height: 155px;
+    height: 165px;
     -webkit-transition: height .5s ease;
     transition: height .5s ease;
 }
 
+.note-row {
+    height: 5px;
+    padding: 0px;
+    margin: 1px;
+}
+
 .sequencer-button {
     height:6px;
-    width: 5vw;
+    width: 4.8vw;
     margin:0px;
     padding: 0px;
     float: left;
@@ -32,8 +38,8 @@
 
 .gear {
     position:absolute;
-    right: 30px;
-    top: 13px;
+    right: 5px;
+    top: 10px;
     -webkit-transition-duration: .5s;
     transition-duration: .5s;
     -webkit-transform:rotate(0deg);
@@ -67,21 +73,21 @@
 .addbtn {
     box-shadow: 2px 2px 5px gray;
     background-color: #b380ff;
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     position: fixed;
-    bottom: 10px;
+    bottom: 30px;
     left: -100px;
 }
 .addbtn h1 {
     color: white;
-    position: absolute;
-    top: -18px;
-    left: 14px;
+    text-align: center;
+    margin: 0px;
+    margin-top: 10px;
 }
 .addbtn.enter {
-    left: 10px;
+    left: 30px;
     transition: left .5s;
     transition-timing-function: ease;
 }
