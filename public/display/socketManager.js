@@ -8,3 +8,6 @@ socket.on('update', function(track){
 socket.on('delete', function(id){
     console.log(tracks);
 });
+socket.on('note', function(note){
+    console.log(note);
+});
