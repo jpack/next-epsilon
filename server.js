@@ -150,21 +150,20 @@ function pushNote(JSONNote){
 // Socket IO =================
 
 io.sockets.on('connect', function(socket){
+    console.log('a user connected');
     socket.on('volume', function(volume){
         console.log("pushed volume change");
         io.emit('volumeChange', volume);
     });
+
+    //Listens for noteSend on a socket, then calls pushNote with it.
+    socket.on('noteSend', function(JSONNote){
+        console.log("Note Recieved");
+        pushNote(JSONNote);
+    });
 });
 
-//Listens for noteSend on a socket, then calls pushNote with it.
-io.on('noteSend', function(JSONNote){
-   console.log("Note Recieved");
-    pushNote(JSONNote);
-});
+
 
 console.log("App listening on port 3000");
 //Added code begins below:
-
-io.on('connection', function(socket){
-    console.log('a user connected');
-});
