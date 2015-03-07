@@ -178,6 +178,14 @@ function deleteID(ID){
     }
 }
 
+function changeVolume(volumeChange){
+    for(var i = 0; i< tracks.length; i++){
+        if(tracks[i].ID -- volumeChange.ID){
+            tracks[i].volume = volumeChange.volume;
+        }
+    }
+}
+
 function playSound(bufferId, pitch, volume, time) {
 
     var source = context.createBufferSource();

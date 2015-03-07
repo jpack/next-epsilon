@@ -14,3 +14,7 @@ socket.on('delete', function(ID){
 socket.on('note', function(note){
     console.log(note);
 });
+socket.on('volumeChange', function(trackVol){
+    console.log(trackVol);
+    changeVolume(trackVol);
+});
