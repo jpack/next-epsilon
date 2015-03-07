@@ -1,6 +1,11 @@
 nextEpsilon.controller('SequencerCtrl', function ($scope, $http) {
+    $scope.offset = 0;
+    $scope.measure = 0;
+    $scope.repeat = false;
+
     // 8 pitches for our interface
-    $scope.measure = new Array(8);
+    $scope.measures = [];
+    $scope.currMeasure = new Array(8);
 
     // 16 beats for each measure
     for(var i = 0; i < 8; i++){
@@ -10,24 +15,24 @@ nextEpsilon.controller('SequencerCtrl', function ($scope, $http) {
             notes[j] = {active: false};
         }
 
-        $scope.measure[i] = notes;
+        $scope.currMeasure[i] = notes;
     }
 
     $scope.saveSequence = function(){
         var trackTemplate = {
             sampleId: 0,
-                isRecording: false,
-            offset: 0,
+            isRecording: false,
+            offset: $scope.offset,
             resolution: 1,
-            repeat: 2,
+            repeat: $scope.repeat,
             lock: false,
             volume: 1,
             notes: []
         };
 
-        for(var i = 0; i < $scope.measure.length; i++){
-            for(var j = 0; j < $scope.measure[i].length; j++){
-                if($scope.measure[i][j].active){
+        for(var i = 0; i < $scope.currMeasure.length; i++){
+            for(var j = 0; j < $scope.currMeasure[i].length; j++){
+                if($scope.currMeasure[i][j].active){
                     trackTemplate.notes.push({startTime: 2 * j, pitch: i});
                 }
             }
