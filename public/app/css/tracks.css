@@ -72,13 +72,29 @@
     border-radius: 50%;
     position: fixed;
     bottom: 10px;
-    left: 10px;
+    left: -100px;
 }
 .addbtn h1 {
     color: white;
     position: absolute;
     top: -18px;
     left: 14px;
+}
+.addbtn.enter {
+    left: 10px;
+    transition: left .5s;
+    transition-timing-function: ease;
+}
+
+#maindiv{
+    position:absolute;
+    width: 100%;
+    top: 100%;
+}
+#maindiv.enter {
+    top: 0;
+    transition: top .5s;
+    transition-timing-function: ease;
 }
 
 .custom {

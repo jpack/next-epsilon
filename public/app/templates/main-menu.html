@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="css/tracks.css">
-<div class="container-fluid">
+<div class="container-fluid" id="maindiv" ng-class="{enter:enter}">
     <div id="tracks" class="row">
         <div class="col-sm-12" ng-repeat="track in tracks">
             <div class="row">
@@ -30,6 +30,6 @@
     </div>
 </div>
 
-<div class="addbtn">
+<div class="addbtn" ng-class="{enter:enter}">
    <h1>+</h1>
 </div>

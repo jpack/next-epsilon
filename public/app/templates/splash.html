@@ -1,37 +1,11 @@
-<link rel="stylesheet" href="css/splash.css" />
-<img src="img/logo1.png" id="logo1">
-<br />
-<img src="img/logo2.png" id="logo2">
-<p class="shimmer">tap to continue</p>
+<div ng-click="tap()">
+    <link rel="stylesheet" href="css/splash.css" />
+    <img src="img/logo1.png" id="logo1" ng-class="{exit:exit}">
+    <br />
+    <img src="img/logo2.png" id="logo2" ng-class="{exit:exit}">
+    <p class="shimmer" ng-class="{exit:exit}">tap to continue</p>
+</div>
 
 <script>
-    var textLogo = document.getElementById('logo1');
-    textLogo.animate([
-        {transform: 'scale(1)', easing: 'ease-in-out'},
-        {transform: 'scale(.93)', easing: 'ease-in-out'},
-        {transform: 'scale(1)', easing: 'ease-in-out'},
-    ], {
-        duration: 1500,
-        iterations: 99999999
-    });
-    var textLogo = document.getElementById('logo2');
-    var animate2 = function() {
-        textLogo.animate([
-            {transform: 'rotate(0)', easing: 'ease-in-out'},
-            {transform: 'rotate(-20deg)', easing: 'ease-in-out'},
-            {transform: 'rotate(20deg)', easing: 'ease-in-out'},
-            {transform: 'rotate(0)', easing: 'ease-in-out'},
-            {transform: 'rotate(0)', easing: 'ease-in-out'},
-            {transform: 'rotate(0)', easing: 'ease-in-out'},
-            {transform: 'rotate(0)', easing: 'ease-in-out'},
-            {transform: 'rotate(0)', easing: 'ease-in-out'},
-        ], {
-            duration: 2000
-        });
-        setTimeout(animate2, Math.random() * 5000)
-    }
-    setTimeout(animate2, Math.random() * 5000)
-
-    window.scrollTo(0,1);
 
 </script>

@@ -1,6 +1,11 @@
 
 
 nextEpsilon.controller('MainMenuCtrl', function ($scope) {
+    setTimeout(function() {
+        $scope.enter = true;
+        $scope.$apply();
+    }, 300);
+
     $scope.tracks = [1, 2, 3, 4, 5];
 
     // 8 pitches for our interface
