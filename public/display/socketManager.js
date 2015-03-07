@@ -13,16 +13,13 @@ socket.on('delete', function(ID){
 });
 socket.on('note', function(note){
 });
-socket.on('volume', function(volume){
-    console.log(volume);
-    volumeUpdate(volume);
-});
 socket.on('volumeChange', function(trackVol){
     console.log(trackVol);
     changeVolume(trackVol);
 });
-socket.on('allTracks', function(allTracks){
-    allTracks(allTracks);
+socket.on('allTracks', function(tracks){
+    console.log("gotAllTracks");
+    allTracks(tracks);
 });
 
 socket.emit('getTracks', null);

@@ -1,5 +1,5 @@
 var nextEpsilon = angular.module('nextEpsilon', ['ngRoute']);
-var socket = io.connect("http://localhost:3000");
+var socket = io.connect();
 
 nextEpsilon.config(['$routeProvider',
     function($routeProvider) {

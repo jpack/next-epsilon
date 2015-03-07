@@ -163,10 +163,11 @@ function allTracks(allTracks) {
     tracks = allTracks;
 }
 
-function volumeUpdate(volume) {
+function changeVolume(volume) {
     for(var i = 0; i < tracks.length; i++) {
         if (tracks[i].ID == volume.id) {
-            tracks[i].volume = volume;
+            console.log("haha");
+            tracks[i].volume = volume.volume;
         }
     }
 }
@@ -187,14 +188,6 @@ function deleteID(ID){
     for(var i = 0; i < tracks.length; i++) {
         if (tracks[i].ID == ID) {
             tracks.slice(i, 1);
-        }
-    }
-}
-
-function changeVolume(volumeChange){
-    for(var i = 0; i< tracks.length; i++){
-        if(tracks[i].ID == volumeChange.ID){
-            tracks[i].volume = volumeChange.volume;
         }
     }
 }
@@ -238,6 +231,7 @@ var loop = function() {
                 var modifiedNoteTime = (note.startTime * (beat / resolution)) + startTime + (track.offset * beat * 4) + loopStart + (i * (Math.floor(myMaxLength/32) + 1) * beat * 4);
                 if (modifiedNoteTime >= scheduledUntil && modifiedNoteTime < nextSchedule) {
                     playSound(track.sampleId, note.pitch, track.volume, modifiedNoteTime / 1000);
+                    pulse();
                 }
                 if (modifiedNoteTime > farthestNote) {
                     farthestNote = modifiedNoteTime;
