@@ -1,0 +1,129 @@
+.track {
+    background-color: white;
+    margin-top: 30px;
+    padding: 5px;
+    height: 60px;
+    box-shadow: 2px 2px 5px gray, 0px 0px 10px gray;
+    overflow: hidden;
+
+    -webkit-transition: height .5s ease;
+    transition: height .5s ease;
+}
+
+.track.open {
+    height: 165px;
+    -webkit-transition: height .5s ease;
+    transition: height .5s ease;
+}
+
+.note-row {
+    height: 5px;
+    padding: 0px;
+    margin: 1px;
+}
+
+.sequencer-button {
+    height:6px;
+    width: 4.8vw;
+    margin:0px;
+    padding: 0px;
+    float: left;
+    background-color: white;
+    border: 0;
+}
+
+.sequencer-button.bright{
+    background-color: black;
+}
+
+.gear {
+    position:absolute;
+    right: 5px;
+    top: 10px;
+    -webkit-transition-duration: .5s;
+    transition-duration: .5s;
+    -webkit-transform:rotate(0deg);
+    transform:rotate(0deg);
+}
+.gear img {
+    width: 32px;
+}
+.gear.open{
+    -webkit-transition-duration: .5s;
+    transition-duration: .5s;
+    -webkit-transform:rotate(180deg);
+    transform:rotate(180deg);
+}
+
+.settings {
+    margin-top: 7px;
+    text-align: left;
+}
+
+.settings button {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.settings p {
+    margin-bottom: -20px;
+    margin-left: 5px;
+}
+
+.addbtn {
+    box-shadow: 2px 2px 5px gray;
+    background-color: #b380ff;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 30px;
+    left: -100px;
+}
+.addbtn h1 {
+    color: white;
+    text-align: center;
+    margin: 0px;
+    margin-top: 10px;
+}
+.addbtn.enter {
+    left: 30px;
+    transition: left .5s;
+    transition-timing-function: ease;
+}
+
+#maindiv{
+    position:absolute;
+    width: 100%;
+    top: 100%;
+}
+#maindiv.enter {
+    top: 0;
+    transition: top .5s;
+    transition-timing-function: ease;
+}
+
+.custom {
+    margin-bottom:10px;
+    margin-top:20px;
+    width: 80%;
+    -webkit-appearance: none !important;
+    height: 20px;
+    border-radius: 8px;
+    background: -webkit-gradient(linear,center top, center bottom, from(#dec8ff),to(#e6d5ff),color-stop(50%,#e0ccff));
+    -webkit-transition: background 450ms;
+    transition: background 450ms;
+}
+
+/* Change the Slider Button Color Here */
+.custom::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    background:#b380ff;
+    height:30px;
+    width:30px;
+    border-radius: 15px;
+}
+
+.custom::-webkit-slider-thumb:before {
+    background-color: yellow;
+}
