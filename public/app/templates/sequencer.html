@@ -28,8 +28,8 @@
     </div>
 </nav>
 
-<div class="sequencer-row text-center" ng-repeat="pitch in measures[currMeasure]" ng-init="i = $index">
-    <button class="sequencer-button" ng-repeat="note in measures[currMeasure][i] track by $index"
+<div class="sequencer-row text-center" ng-repeat="pitch in measure" ng-init="i = $index">
+    <button class="sequencer-button" ng-repeat="note in measure[i] track by $index"
             ng-click="note.active = !note.active" ng-class="{bright: note.active}">
         &nbsp;
     </button>
