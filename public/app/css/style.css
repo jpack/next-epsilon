@@ -1,0 +1,48 @@
+body{
+    height: 100%;
+    width: 100%;
+    background-color: #000000;
+}
+
+#navbar{
+    background-color: #000000;
+    height: 10%;
+}
+
+#view{
+    height: 90%;
+}
+
+
+#sequencer{
+    background-color: #000000;
+}
+
+.sequencer-grid{
+    width: 100%;
+    height: 100%;
+}
+
+.sequencer-row{
+    height:10%
+}
+
+.sequencer-button-mount{
+
+}
+
+.sequencer-button{
+    width: 5%;
+    margin: 5px;
+    height: 9vh;
+    padding:5px;
+    background-color: #666;
+    border: 1px solid #666;
+    color:#000;
+    text-decoration:none;
+    border-radius: 5px;
+}
+
+.bright{
+    background-color: yellow;
+}
