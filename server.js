@@ -2,7 +2,29 @@ var express = require('express');
 var app = express();
 var server = app.listen(3000);
 var io = require('socket.io')(server);
-var tracks = [];
+var tracks = [{
+    ID: 0,
+    sampleId: 0,
+    isRecording: false,
+    offset: 0,
+    resolution: 1,
+    repeat: 3,
+    lock: false,
+    volume: 1.3,
+    notes: [
+        {startTime: 0, pitch: 0},
+        {startTime: 2, pitch: 2},
+        {startTime: 4, pitch: 0},
+        {startTime: 4, pitch: 1},
+        {startTime: 6, pitch: 2},
+        {startTime: 8, pitch: 0},
+        {startTime: 8, pitch: 1},
+        {startTime: 10, pitch: 2},
+        {startTime: 12, pitch: 0},
+        {startTime: 12, pitch: 1},
+        {startTime: 14, pitch: 2},
+    ]
+}];
 var bodyParser = require('body-parser');
 
 
@@ -127,10 +149,10 @@ function pushNote(JSONNote){
 
 // Socket IO =================
 
-io.on('volume', function(volume)){
+io.on('volume', function(volume){
     console.log("pushed volume change");
     io.emit('volumeChange', volume);
-}
+});
 
 //Listens for noteSend on a socket, then calls pushNote with it.
 io.on('noteSend', function(JSONNote){
