@@ -37,7 +37,9 @@
 			SCREEN_HEIGHT = window.innerHeight,
 
 			mouseX = 0, mouseY = 0,
-			cameraZ = 200,
+			cameraDist = 200,
+			cameraAngle = 0,
+			RAD = 180 / 3.14159265,
 
 			windowHalfX = window.innerWidth / 2,
 			windowHalfY = window.innerHeight / 2,
@@ -47,6 +49,7 @@
 			AMOUNTY = 10,
 
 			camera, scene, renderer;
+
 
 			init();
 			animate();
@@ -60,7 +63,7 @@
 				document.body.appendChild(container);
 
 				camera = new THREE.PerspectiveCamera( 75, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000 );
-				camera.position.z = cameraZ;
+				camera.position.z = cameraDist;
 
 				scene = new THREE.Scene();
 
@@ -82,7 +85,7 @@
 
 					var material = new THREE.SpriteCanvasMaterial( {
 							color: rgbToHtml(Red, 0, 0),
-							//opacity: Math.random(),
+							opacity: Math.random(),
 							program: function ( context ) {
 
 							context.beginPath();
@@ -100,7 +103,7 @@
 					particle.position.z = Math.random() * 2 - 1;
 					particle.position.normalize();
 					particle.position.multiplyScalar( Math.random() * 10 + 450 );
-					particle.scale.multiplyScalar( 5 );
+					particle.scale.multiplyScalar( 50 );
 					scene.add( particle );
 
 				}
@@ -113,12 +116,12 @@
 
 					var vertex = new THREE.Vector3( Math.random() * 2 - 1, Math.random() * 2 - 1, Math.random() * 2 - 1 );
 					vertex.normalize();
-					vertex.multiplyScalar( 450 );
+					vertex.multiplyScalar( 150 );
 
 					geometry.vertices.push( vertex );
 
 					var vertex2 = vertex.clone();
-					vertex2.multiplyScalar( Math.random() * 0.3 + 1 );
+					vertex2.multiplyScalar( Math.random() * 6 + 1 );
 
 					geometry.vertices.push( vertex2 );
 
@@ -163,20 +166,20 @@
 			}
 
 			function pulse() {
-				cameraZ -= 500;
-				if (cameraZ < 0) {
-					cameraZ = 0;
+				cameraDist -= 500;
+				if (cameraDist < 0) {
+					cameraDist = 0;
 				}
-				camera.position.z = cameraZ;
+				//camera.position.z = cameraDist;
 
 			}
 
 			function onDocumentMouseDown(event) {
-				cameraZ -= 500;
-				if (cameraZ < 0) {
-					cameraZ = 0;
+				cameraDist -= 500;
+				if (cameraDist < 0) {
+					cameraDist = 0;
 				}
-				camera.position.z = cameraZ;
+				//camera.position.z = cameraDist;
 
 			}
 
@@ -219,20 +222,26 @@
 				requestAnimationFrame( animate );
 
 				render();
-				cameraZ += 100;
-				if (cameraZ > 2000) {
-					cameraZ = 2000;
+				cameraDist += 100;
+				if (cameraDist > 2000) {
+					cameraDist = 2000;
 				}
-				camera.position.z = cameraZ;
+				//camera.position.z = cameraDist;
 			}
 
 			function render() {
 
-				camera.position.x += ( mouseX - camera.position.x ) * .05;
-				camera.position.y += ( - mouseY + 200 - camera.position.y ) * .05;
+				//camera.position.x += ( mouseX - camera.position.x ) * .05;
+				//camera.position.y += ( - mouseY + 200 - camera.position.y ) * .05;
 
-				//camera.position.x += 100;
-				//camera.position.y += 100;
+				cameraAngle += 5;
+				if (cameraAngle >= 360) {
+					cameraAngle -= 360;
+				}
+
+				camera.position.x = Math.cos(cameraAngle / RAD) * cameraDist;
+				camera.position.y = 0;
+				camera.position.y = Math.sin(cameraAngle / RAD) * cameraDist;
 
 				camera.lookAt( scene.position );
 
