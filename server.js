@@ -15,6 +15,11 @@ app.get('/display', function(req, res) {
     res.sendfile('./public/display/index.html'); // load the single view file (angular will handle the page changes on the front-end)
 });
 
+//test
+app.get('/', function(req, res){
+   res.sendfile('./public/display/index.html');
+});
+
 console.log("App listening on port 3000");
 //Added code begins below:
 
