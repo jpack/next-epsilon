@@ -1,11 +1,12 @@
-function emitDeleteTrack(int id) {
+function emitDeleteTrack(id) {
 	io.emit('deleteTrack', id);	
 }
 
-function emitAddTrack(string JSONTrackToAdd) {
+function emitAddTrack(JSONTrackToAdd) {
 	io.emit('addTrack', JSONTrackToAdd);
 }
 
-function emitUpdateTrack(string JSONTrackToUpdate) {
+function emitUpdateTrack(JSONTrackToUpdate) {
 	io.emit('updateTrack', JSONTrackToUpdate);
 }
+
