@@ -1,5 +1,3 @@
-
-
 nextEpsilon.controller('MainMenuCtrl', function ($scope) {
     setTimeout(function() {
         $scope.enter = true;
@@ -32,5 +30,4 @@ nextEpsilon.controller('MainMenuCtrl', function ($scope) {
         }
         console.log("abc");
     }
-
 });

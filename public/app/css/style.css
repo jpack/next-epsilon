@@ -4,31 +4,15 @@ body{
     background-color: #000000;
 }
 
-#navbar{
-    background-color: #000000;
-    height: 10%;
+.track-preview{
+    margin-bottom: 10px;
+    background-color: purple;
+    height: 20vh;
 }
 
-#view{
-    height: 90%;
-}
-
-
-#sequencer{
-    background-color: #000000;
-}
-
-.sequencer-grid{
-    width: 100%;
-    height: 100%;
-}
 
 .sequencer-row{
     height:10%
-}
-
-.sequencer-button-mount{
-
 }
 
 .sequencer-button{
