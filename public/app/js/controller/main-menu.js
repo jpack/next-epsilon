@@ -41,5 +41,14 @@ nextEpsilon.controller('MainMenuCtrl', function ($scope, $http) {
         }
         console.log("abc");
     };
+    $scope.delTrack = function(track){
+        for(var i = 0; i < tracks.length; i++) {
+            if (tracks[i].ID == track.ID) {
+                tracks.splice(i, 1);
+            }
+        }
+      console.log("Attempted delete: " + track.ID);
+        $http.post('/deleteTrack', track);
+    };
 
 });

@@ -60,7 +60,7 @@ app.post('/getTrack', function(req,res){
 
 //Handles post requests for track deletion.
 app.post('/deleteTrack', function(req, res){
-   console.log(req.body.ID);
+   console.log("ATTEMPTING DELETE ON: " + req.body.ID);
     deleteTrack(req.body);
     pushDelete(req.body);
     res.send("Deleted");
@@ -88,9 +88,10 @@ function updateTrack(json){
 
 //Deletes a JSON Track from memory
 function deleteTrack(json){
+    console.log("Attempting Delete: ");
     for(var i = 0; i < tracks.length; i++) {
         if (tracks[i].ID == json.ID) {
-            tracks.slice(i, 1);
+            tracks.splice(i, 1);
         }
     }
 };

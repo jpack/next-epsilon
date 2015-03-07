@@ -18,7 +18,7 @@
                             <div class="settings">
                                 <p>Volume</p>
                                 <input type="range" ng-model="track.volume" ng-change="volumeChange(track)" min="0" max="3" step=".1" class="custom "/>
-                                <button class="btn">Delete</button>
+                                <button class="btn" ng-click="delTrack(track)" ng-click="delObj(this)">Delete</button>
                             </div>
                         </div>
                     </div>
@@ -34,7 +34,9 @@
         </div>
     </div>
     <div>
-        <h1 ng-if="tracks.length == 0">No Tracks found. Tap the button below to add a new track.</h1>
+       <!--
+       <h1 ng-if="tracks.length == 0">No Tracks found. Tap the button below to add a new track.</h1>
+       -->
     </div>
 </div>
 

@@ -21,6 +21,7 @@ nextEpsilon.controller('SequencerCtrl', function ($scope, $http) {
     $scope.saveSequence = function(){
         var trackTemplate = {
             sampleId: $scope.instrumentId,
+            ID: Math.floor((Math.random() * 10000) + 1),
             isRecording: false,
             offset: 0,
             resolution: 1,
@@ -29,7 +30,7 @@ nextEpsilon.controller('SequencerCtrl', function ($scope, $http) {
             volume: 1,
             notes: []
         };
-
+        console.log("ID:"+trackTemplate.ID);
         for(var i = 0; i < $scope.measure.length; i++){
             for(var j = 0; j < $scope.measure[i].length; j++){
                 if($scope.measure[i][j].active){

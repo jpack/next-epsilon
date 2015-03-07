@@ -7,9 +7,9 @@ socket.on('update', function(track){
     console.log(track);
     update(track);
 });
-socket.on('delete', function(ID){
-    console.log(ID);
-    deleteID(ID);
+socket.on('delete', function(track){
+    console.log(track.ID);
+    deleteID(track.ID);
 });
 socket.on('note', function(note){
     playNote(note);

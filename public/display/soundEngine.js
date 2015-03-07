@@ -187,9 +187,11 @@ function update(Track){
 function deleteID(ID){
     for(var i = 0; i < tracks.length; i++) {
         if (tracks[i].ID == ID) {
-            tracks.slice(i, 1);
+           console.log("deleting:" + ID) ;
+            tracks.splice(i, 1);
         }
     }
+    console.log(tracks);
 }
 
 function playNote(note) {
