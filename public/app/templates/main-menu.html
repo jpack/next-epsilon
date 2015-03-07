@@ -16,8 +16,8 @@
 
                         <div class="col-lg-12">
                             <div class="settings">
-                                <p>Volume{{track.volume}}</p>
-                                <input type="range" ng-model="track.volume" ng-change="volumeChange(track)" class="custom "/>
+                                <p>Volume</p>
+                                <input type="range" ng-model="track.volume" ng-change="volumeChange(track)" min="0" max="3" step=".1" class="custom "/>
                                 <button class="btn">Delete</button>
                             </div>
                         </div>

@@ -18,7 +18,7 @@ nextEpsilon.controller('MainMenuCtrl', function ($scope, $http) {
             id: track.ID,
             volume: track.volume
         });
-    }
+    };
 
 
     // 16 beats for each measure

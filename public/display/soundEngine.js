@@ -17,7 +17,8 @@ bufferLoader = new BufferLoader(
     finishedLoading
 );
 
-var tracks = [{
+var tracks = []
+/*{
     ID: 0,
     sampleId: 0,
     isRecording: false,
@@ -137,7 +138,7 @@ var tracks = [{
             {startTime: 14, pitch: 0},
             {startTime: 14, pitch: 4},
         ]
-}];
+}]; */
 
 bufferLoader.load();
 
@@ -157,6 +158,18 @@ var pitchToSemitones = [
     21,
     23,
 ];
+
+function allTracks(allTracks) {
+    tracks = allTracks;
+}
+
+function volumeUpdate(volume) {
+    for(var i = 0; i < tracks.length; i++) {
+        if (tracks[i].ID == volume.id) {
+            tracks[i].volume = volume;
+        }
+    }
+}
 
 function add(Track){
     tracks.push(Track);
@@ -180,7 +193,7 @@ function deleteID(ID){
 
 function changeVolume(volumeChange){
     for(var i = 0; i< tracks.length; i++){
-        if(tracks[i].ID -- volumeChange.ID){
+        if(tracks[i].ID == volumeChange.ID){
             tracks[i].volume = volumeChange.volume;
         }
     }
