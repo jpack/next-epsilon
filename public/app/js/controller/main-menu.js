@@ -44,6 +44,21 @@ nextEpsilon.controller('MainMenuCtrl', function ($scope, $http, $route, $locatio
         },100);
     };
 
+    socket.on('delete', function(track){
+        for (var i =0; i<$scope.tracks.length; i++) {
+            if ($scope.tracks[i].ID == track.ID) {
+                $scope.tracks.splice(i, 1);
+            }
+        }
+        $scope.$apply();
+    });
+
+    socket.on('add', function(track){
+        console.log(track);
+        $scope.tracks.push(track);
+        $scope.$apply();
+    });
+
     $scope.openSettings = function(obj) {
         if (obj.open === undefined) {
             obj.open = true;
