@@ -3,6 +3,9 @@ body{
     width: 100%;
     background-color: #000000;
 }
+.track-text{
+    margin-top: 10px;
+}
 
 .track-preview{
     margin-bottom: 10px;

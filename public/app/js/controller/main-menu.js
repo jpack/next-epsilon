@@ -44,17 +44,6 @@ nextEpsilon.controller('MainMenuCtrl', function ($scope, $http, $route, $locatio
         },100);
     };
 
-    // 16 beats for each measure
-    for(var i = 0; i < 8; i++){
-        var notes = new Array(16);
-
-        for(var j = 0; j < 16; j++){
-            notes[j] = {active: false};
-        }
-
-        $scope.measure[i] = notes;
-    }
-
     $scope.openSettings = function(obj) {
         if (obj.open === undefined) {
             obj.open = true;
@@ -63,6 +52,10 @@ nextEpsilon.controller('MainMenuCtrl', function ($scope, $http, $route, $locatio
             obj.open = !obj.open;
         }
         console.log("abc");
+    };
+
+    $scope.noteFill = function(track){
+
     };
 
     $scope.delTrack = function(track){
