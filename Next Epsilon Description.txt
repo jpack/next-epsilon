@@ -1,0 +1,5 @@
+Next Epsilon: Multi-User Music Composition
+
+Next Epsilon allows multiple users to collaborate and create electronic music. Users can create multiple loops using different instruments, then play the instruments freely over their composition. For the Appathon, clients will access the app on various mobile devices and the resulting sound will be played on a single server.
+
+Two modes of music creation are available: A sequencer, and a live music interface. The sequencer allows a track to be added to the repeating loop of music. The live music interface allows a user to 'freestyle' on top of the tracks without permanently altering the loop.
