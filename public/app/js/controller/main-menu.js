@@ -1,4 +1,4 @@
-nextEpsilon.controller('MainMenuCtrl', function ($scope, $http) {
+nextEpsilon.controller('MainMenuCtrl', function ($scope, $http, $route) {
     setTimeout(function() {
         $scope.enter = true;
         $scope.$apply();
@@ -41,14 +41,22 @@ nextEpsilon.controller('MainMenuCtrl', function ($scope, $http) {
         }
         console.log("abc");
     };
+
     $scope.delTrack = function(track){
         for(var i = 0; i < tracks.length; i++) {
             if (tracks[i].ID == track.ID) {
                 tracks.splice(i, 1);
             }
         }
+
       console.log("Attempted delete: " + track.ID);
-        $http.post('/deleteTrack', track);
+        $http.post('/deleteTrack', track)
+            .success(function(){
+                $http.get('/getTracks')
+                    .success(function(data){
+                        $scope.tracks = data;
+                    })
+            });
     };
 
 });
