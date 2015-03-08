@@ -11,7 +11,7 @@
 }
 
 .track.open {
-    height: 165px;
+    height: 212px;
     -webkit-transition: height .5s ease;
     transition: height .5s ease;
 }
