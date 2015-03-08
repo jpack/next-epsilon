@@ -1,4 +1,4 @@
-nextEpsilon.controller('MainMenuCtrl', function ($scope, $http, $route) {
+nextEpsilon.controller('MainMenuCtrl', function ($scope, $http, $route, $location) {
     setTimeout(function() {
         $scope.enter = true;
         $scope.$apply();
@@ -20,6 +20,29 @@ nextEpsilon.controller('MainMenuCtrl', function ($scope, $http, $route) {
         });
     };
 
+    $scope.newTrack = function() {
+        $scope.newSelected = true;
+        setTimeout(function() {
+            $scope.enter = false;
+            $scope.$apply();
+            setTimeout(function () {
+                $location.url("/sequencer");
+                $scope.$apply();
+            }, 600);
+        },100);
+    };
+
+    $scope.live = function() {
+        $scope.liveSelected = true;
+        setTimeout(function() {
+            $scope.enter = false;
+            $scope.$apply();
+            setTimeout(function () {
+                $location.url("/live");
+                $scope.$apply();
+            }, 600);
+        },100);
+    };
 
     // 16 beats for each measure
     for(var i = 0; i < 8; i++){
