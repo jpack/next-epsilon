@@ -1,9 +1,9 @@
 .track {
-    background-color: white;
+    background-color: #ffffff;
+    border-radius: 5px;
     margin-top: 30px;
     padding: 5px;
     height: 60px;
-    box-shadow: 2px 2px 5px gray, 0px 0px 10px gray;
     overflow: hidden;
 
     -webkit-transition: height .5s ease;
@@ -57,7 +57,6 @@
 
 .settings {
     margin-top: 7px;
-    text-align: left;
 }
 
 .settings button {
@@ -71,8 +70,7 @@
 }
 
 .addbtn {
-    box-shadow: 2px 2px 5px gray;
-    background-color: #b380ff;
+    background-color: #204478;
     width: 70px;
     height: 70px;
     border-radius: 50%;
@@ -87,8 +85,7 @@
 }
 
 .livebtn {
-    box-shadow: 2px 2px 5px gray;
-    background-color: #b380ff;
+    background-color: #204478;
     width: 70px;
     height: 70px;
     border-radius: 50%;
@@ -113,6 +110,11 @@
     text-align: center;
     margin-left: 17px;
     margin-top: 16px;
+}
+
+.delete-btn {
+    background-color:#204478;
+    color:#ffffff;
 }
 
 .addbtn h1 {
@@ -147,7 +149,7 @@
     -webkit-appearance: none !important;
     height: 20px;
     border-radius: 8px;
-    background: -webkit-gradient(linear,center top, center bottom, from(#dec8ff),to(#e6d5ff),color-stop(50%,#e0ccff));
+    background: -webkit-gradient(linear,center top, center bottom, from(#204478),to(#204478),color-stop(50%,#204478));
     -webkit-transition: background 450ms;
     transition: background 450ms;
 }
@@ -155,7 +157,7 @@
 /* Change the Slider Button Color Here */
 .custom::-webkit-slider-thumb {
     -webkit-appearance: none !important;
-    background:#b380ff;
+    background:#5473A2;
     height:30px;
     width:30px;
     border-radius: 15px;
