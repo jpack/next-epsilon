@@ -1,4 +1,9 @@
-nextEpsilon.controller('SequencerCtrl', function ($scope, $http) {
+nextEpsilon.controller('SequencerCtrl', function ($scope, $http, $location) {
+    setTimeout(function() {
+        $scope.enter = true;
+        $scope.$apply();
+    }, 300);
+
     $scope.instrumentId = 0;
     $scope.measure = [];
 
@@ -18,6 +23,17 @@ nextEpsilon.controller('SequencerCtrl', function ($scope, $http) {
         }
 
         return measure;
+    };
+
+    $scope.back = function() {
+        setTimeout(function() {
+            $scope.enter = false;
+            $scope.$apply();
+            setTimeout(function () {
+                $location.url("/tracks");
+                $scope.$apply();
+            }, 600);
+        },100);
     };
 
     $scope.saveSequence = function(){
@@ -42,6 +58,14 @@ nextEpsilon.controller('SequencerCtrl', function ($scope, $http) {
         }
 
         $http.post('/addTrack', trackTemplate);
+        setTimeout(function() {
+            $scope.enter = false;
+            $scope.$apply();
+            setTimeout(function () {
+                $location.url("/tracks");
+                $scope.$apply();
+            }, 600);
+        },100);
     };
 
     $scope.setInstrument = function(instrumentId){

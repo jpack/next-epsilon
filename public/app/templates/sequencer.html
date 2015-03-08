@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-static-top sequencer-nav">
+<nav class="navbar navbar-inverse navbar-static-top sequencer-nav" ng-class="{enter:enter}">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -8,12 +8,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">NE</a>
+            <a class="navbar-brand" ng-click="back()">Back</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Instrument
+                    <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Instrument
                         Select <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a ng-click="setInstrument(0)">Sweet Drum</a></li>
@@ -24,14 +24,13 @@
                         <li><a ng-click="setInstrument(5)">Beepin' Bass</a></li>
                     </ul>
                 </li>
-                <li><a href="#/tracks" ng-click="saveSequence()">Save</a></li>
-                <li><a href="#/tracks" ng-click="">Close</a></li>
+                <li><a class="navbar-brand" ng-click="saveSequence()">Save</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<div class="sequencer-row text-center" ng-repeat="pitch in measure" ng-init="index = $index">
+<div class="sequencer-row text-center" ng-repeat="pitch in measure" ng-init="index = $index"  ng-class="{enter:enter, oddRow: $odd, evenRow: $even}">
     <button class="sequencer-button" ng-repeat="note in measure[index] track by $index"
             ng-click="note.active = !note.active" ng-class="{bright: note.active}">
     </button>

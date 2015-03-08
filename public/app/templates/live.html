@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-static-top sequencer-nav">
+<nav class="navbar navbar-inverse navbar-static-top sequencer-nav" ng-class="{enter: enter}">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -8,12 +8,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">NE</a>
+            <a class="navbar-brand" ng-click="back()">Back</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Instrument
+                    <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Instrument
                         Select <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a ng-click="setInstrument(0)">Sweet Drum</a></li>
@@ -24,13 +24,12 @@
                         <li><a ng-click="setInstrument(5)">Beepin' Bass</a></li>
                     </ul>
                 </li>
-                <li><a href="#/tracks" ng-click="">Cancel</a></li>
             </ul>
         </div>
     </div>
 </nav>
 <div class="container">
-    <div class="row">
+    <div class="row row1" ng-class="{enter:enter}">
         <div class="col-xs-3">
             <button ng-mobile-click="play(7)" class="live-button">7</button>
         </div>
@@ -47,7 +46,7 @@
             <button ng-mobile-click="play(4)" class="live-button">4</button>
         </div>
     </div>
-    <div class="row">
+    <div class="row row2" ng-class="{enter:enter}">
         <div class="col-xs-3">
             <button ng-mobile-click="play(3)" class="live-button">3</button>
         </div>
