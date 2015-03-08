@@ -3,15 +3,12 @@ body{
     width: 100%;
     background-color: #000000;
 }
+
 .track-text{
+    color:#204478;
     margin-top: 10px;
 }
 
-.track-preview{
-    margin-bottom: 10px;
-    background-color: purple;
-    height: 20vh;
-}
 
 .sequencer-row{
     z-index: 100;

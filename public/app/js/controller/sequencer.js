@@ -6,8 +6,7 @@ nextEpsilon.controller('SequencerCtrl', function ($scope, $http, $location) {
 
     $scope.instrumentId = 0;
     $scope.measure = [];
-
-    var trackId = 0;
+    $scope.trackName = '';
 
     var createMeasure = function(){
         // 8 pitches per measure
@@ -39,7 +38,8 @@ nextEpsilon.controller('SequencerCtrl', function ($scope, $http, $location) {
     $scope.saveSequence = function(){
         var trackTemplate = {
             sampleId: $scope.instrumentId,
-            ID: trackId++,
+            trackName: $scope.trackName,
+            ID: window.trackId++,
             isRecording: false,
             offset: 0,
             resolution: 1,
