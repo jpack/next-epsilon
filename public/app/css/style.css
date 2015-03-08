@@ -1,6 +1,6 @@
 body{
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     background-color: #000000;
 }
 
@@ -95,8 +95,8 @@ body{
     color: #fff;
     width: 100%;
     height: 20vh;
-    margin-bottom: 10vh;
-    margin-top: 10vh;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
     background-color: #2B5DA5;
     border: none;
     border-radius: 80px;
@@ -122,4 +122,34 @@ body {
     background-attachment: fixed;
     background-size: 80%;
     background-position: bottom right;
+}
+
+.custom {
+    margin-bottom:10px;
+    margin-top:20px;
+    width: 80%;
+    -webkit-appearance: none !important;
+    height: 20px;
+    border-radius: 8px;
+    background: -webkit-gradient(linear,center top, center bottom, from(#204478),to(#204478),color-stop(50%,#204478));
+    -webkit-transition: background 450ms;
+    transition: background 450ms;
+}
+
+/* Change the Slider Button Color Here */
+.custom::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    background:#5473A2;
+    height:30px;
+    width:30px;
+    border-radius: 15px;
+}
+
+.custom::-webkit-slider-thumb:before {
+    background-color: yellow;
+}
+
+.live-volume p {
+    margin-bottom:-10px;
+    font-size: 18pt;
 }

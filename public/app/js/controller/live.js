@@ -19,11 +19,12 @@ nextEpsilon.controller('LiveCtrl', function ($location, $scope) {
     $scope.sampleId = 0;
 
     $scope.play = function(pitch){
-        socket.emit('noteSend', {sampleId: $scope.sampleId, pitch: pitch})
+        socket.emit('noteSend', {sampleId: $scope.sampleId, pitch: pitch, volume: $scope.volume})
     };
 
     $scope.setInstrument = function(instrumentId){
         $scope.sampleId = instrumentId;
+
     }
 });
 

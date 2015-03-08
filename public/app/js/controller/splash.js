@@ -10,7 +10,7 @@ nextEpsilon.controller('SplashCtrl', function ($scope, $http, $location) {
                 $location.url("/tracks");
                 $scope.$apply();
             }, 600);
-        },100);
+        },500);
     }
 
     var animation;

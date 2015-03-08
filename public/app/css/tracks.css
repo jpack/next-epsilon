@@ -141,28 +141,3 @@
     transition: top .5s;
     transition-timing-function: ease;
 }
-
-.custom {
-    margin-bottom:10px;
-    margin-top:20px;
-    width: 80%;
-    -webkit-appearance: none !important;
-    height: 20px;
-    border-radius: 8px;
-    background: -webkit-gradient(linear,center top, center bottom, from(#204478),to(#204478),color-stop(50%,#204478));
-    -webkit-transition: background 450ms;
-    transition: background 450ms;
-}
-
-/* Change the Slider Button Color Here */
-.custom::-webkit-slider-thumb {
-    -webkit-appearance: none !important;
-    background:#5473A2;
-    height:30px;
-    width:30px;
-    border-radius: 15px;
-}
-
-.custom::-webkit-slider-thumb:before {
-    background-color: yellow;
-}

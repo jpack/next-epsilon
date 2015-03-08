@@ -30,6 +30,12 @@
 </nav>
 <div class="container">
     <div class="row row1" ng-class="{enter:enter}">
+        <div class="col-xs-12 live-volume">
+            <p>Volume</p>
+            <input type="range" ng-model="volume" min="0" max="3" step=".1" class="custom "/>
+        </div>
+    </div>
+    <div ng-if="sampleId!=0" class="row row1" ng-class="{enter:enter}">
         <div class="col-xs-3">
             <button ng-mobile-click="play(7)" class="live-button">D</button>
         </div>
@@ -48,19 +54,19 @@
     </div>
     <div class="row row2" ng-class="{enter:enter}">
         <div class="col-xs-3">
-            <button ng-mobile-click="play(3)" class="live-button">G</button>
+            <button ng-mobile-click="play(3)" class="live-button">{{sampleId == 0 ? '1' : 'G'}}</button>
         </div>
 
         <div class="col-xs-3">
-            <button ng-mobile-click="play(2)" class="live-button">F#</button>
+            <button ng-mobile-click="play(2)" class="live-button">{{sampleId == 0 ? '2' : 'F#'}}</button>
         </div>
 
         <div class="col-xs-3">
-            <button ng-mobile-click="play(1)" class="live-button">E</button>
+            <button ng-mobile-click="play(1)" class="live-button">{{sampleId == 0 ? '3' : 'E'}}</button>
         </div>
 
         <div class="col-xs-3">
-            <button ng-mobile-click="play(0)" class="live-button">D</button>
+            <button ng-mobile-click="play(0)" class="live-button">{{sampleId == 0 ? '4' : 'D'}}</button>
         </div>
     </div>
 </div>

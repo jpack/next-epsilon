@@ -222,7 +222,7 @@ function deleteID(ID){
 }
 
 function playNote(note) {
-    playSound(note.sampleId, note.pitch, 1, context.currentTime );
+    playSound(note.sampleId, note.pitch, note.volume, context.currentTime );
     pulse();
 }
 
