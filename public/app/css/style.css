@@ -44,12 +44,16 @@ body{
     margin-bottom: 1vh;
     height: 8vh;
     padding:5px;
-    background-color: #666;
-    border: 1px solid #666;
+    background-color: #435979;
     color:#000;
     border-radius: 5px;
     z-index: 100;
     outline: 0;
+    border:none;
+}
+
+.sequencer-button.upbeat{
+    background-color: #666;
 }
 
 .row2 {
@@ -93,13 +97,15 @@ body{
     height: 20vh;
     margin-bottom: 10vh;
     margin-top: 10vh;
-    background-color: #666;
+    background-color: #2B5DA5;
     border: none;
     border-radius: 80px;
+    font-size: 34pt;
+    outline: 0;
 }
 
-.bright{
-    background-color: yellow;
+.sequencer-button.bright{
+    background-color: rgb(154, 201, 255);
 }
 
 #bg1 {

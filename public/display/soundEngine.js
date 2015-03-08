@@ -8,6 +8,7 @@ bufferLoader = new BufferLoader(
         'sounds/snare.ogg',
         'sounds/hihat.ogg',
         'sounds/clap.ogg',
+        'sounds/clav01.ogg',
         'sounds/bass01.ogg',
         'sounds/electric_ping01.ogg',
         'sounds/synth.ogg',
@@ -142,22 +143,48 @@ var tracks = []
 
 bufferLoader.load();
 
-var pitchToSemitones = [
-    0,
-    2,
-    4,
-    5,
-    7,
-    9,
-    11,
-    12,
-    14,
-    16,
-    17,
-    19,
-    21,
-    23,
-];
+
+function pitchToSemitones(pitchKey) {
+    var octave = Math.floor(Math.abs(pitchKey) / 7);
+    var relKey = pitchKey % 7;
+
+    if (pitchKey < 0) {
+        octave--;
+        relKey = (pitchKey + (Math.abs(octave) * 7)) % 7;
+    }
+
+    console.log(relKey);
+    switch (relKey) {
+        case 0:
+            return 0 + (12*octave);
+        case .5:
+            return 1 + (12*octave);
+        case 1:
+            return 2 + (12*octave);
+        case 1.5:
+            return 3 + (12*octave);
+        case 2:
+            return 4 + (12*octave);
+        case 3:
+            return 5 + (12*octave);
+        case 3.5:
+            return 6 + (12*octave);
+        case 4:
+            return 7 + (12*octave);
+        case 4.5:
+            return 8 + (12*octave);
+        case 5:
+            return 9 + (12*octave);
+        case 5.5:
+            return 10 + (12*octave);
+        case 6:
+            return 11 + (12*octave);
+        case 6.5:
+            return 12 + (12*octave);
+        case 7:
+            return 13 + (12*octave);
+    }
+}
 
 function allTracks(allTracks) {
     tracks = allTracks;
@@ -203,8 +230,8 @@ function playSound(bufferId, pitch, volume, time) {
 
     var source = context.createBufferSource();
     if (bufferId != 0) {
-        source.buffer = bufferList[bufferId+3];
-        source.playbackRate.value = (Math.pow(2, (pitchToSemitones[pitch] / 12)));
+        source.buffer = bufferList[bufferId+4];
+        source.playbackRate.value = (Math.pow(2, (pitchToSemitones(pitch) / 12)));
     }
     else {
         source.buffer = bufferList[pitch];
@@ -223,19 +250,25 @@ var startTime = (context.currentTime + 1.00) * 1000;
 var currentTime = 0;
 var loopStart = 0;
 var scheduledUntil = 0;
-var beat = 1/140 * 1000 * 60; //beat in milliseconds (120 bpm)
+var beat = 1/160 * 1000 * 60; //beat in milliseconds (120 bpm)
 var resolution = 4;
 
 var loop = function() {
     var time = (context.currentTime + 0.100) * 1000;
-    var nextSchedule = time + 220;
+    var nextSchedule = time + 300;
     var farthestNote = 0;
+
+    if (tracks.length == 0) {
+        scheduledUntil = nextSchedule;
+        loopStart = (Math.floor(time / (beat*4))+1) * (beat*4);
+        return;
+    }
 
     tracks.forEach(function(track) {
         var myMaxLength= 0;
         for (var i = 0; i <= track.repeat; i++) {
             track.notes.forEach(function (note) {
-                var modifiedNoteTime = (note.startTime * (beat / resolution)) + startTime + (track.offset * beat * 4) + loopStart + (i * (Math.floor(myMaxLength/32) + 1) * beat * 4);
+                var modifiedNoteTime = (note.startTime * (beat / resolution)) + startTime + (track.offset * beat * 4) + loopStart + (i * (Math.floor(myMaxLength/16) + 1) * beat * 4);
                 if (modifiedNoteTime >= scheduledUntil && modifiedNoteTime < nextSchedule) {
                     playSound(track.sampleId, note.pitch, track.volume, modifiedNoteTime / 1000);
                     pulse();
@@ -251,11 +284,12 @@ var loop = function() {
     });
 
     if (farthestNote < nextSchedule) {
-        console.log(((farthestNote-startTime) / (beat*4)));
         loopStart = (Math.floor((farthestNote-startTime) / (beat*4))+1) * (beat*4);
+        scheduledUntil = farthestNote;
     }
-
-    scheduledUntil = nextSchedule;
+    else {
+        scheduledUntil = nextSchedule;
+    }
 }
 
 function finishedLoading(list) {

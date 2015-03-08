@@ -2,22 +2,208 @@ var express = require('express');
 var app = express();
 var server = app.listen(3000);
 var io = require('socket.io')(server);
-var tracks = [{
-    ID: 0,
-    sampleId: 0,
-    isRecording: false,
-    offset: 0,
-    resolution: 1,
-    repeat: 3,
-    lock: false,
-    volume: 1.3,
-    notes: [
-        {startTime: 0, pitch: 0},
-        {startTime: 4, pitch: 0},
-        {startTime: 8, pitch: 0},
-        {startTime: 12, pitch: 0},
-    ]
-}];
+var tracks = [
+    {
+        ID: 0,
+        trackName: "Drum Loop",
+        sampleId: 0,
+        isRecording: false,
+        offset: 0,
+        resolution: 1,
+        repeat: 7,
+        lock: false,
+        volume: 1.3,
+        notes: [
+            {startTime: 0, pitch: 0},
+            {startTime: 2, pitch: 2},
+            {startTime: 2, pitch: 4},
+            {startTime: 4, pitch: 0},
+            {startTime: 4, pitch: 1},
+            {startTime: 4, pitch: 4},
+            {startTime: 6, pitch: 2},
+            {startTime: 7, pitch: 2},
+            {startTime: 8, pitch: 0},
+            {startTime: 10, pitch: 2},
+            {startTime: 12, pitch: 0},
+            {startTime: 12, pitch: 1},
+            {startTime: 14, pitch: 2},
+            {startTime: 14, pitch: 4},
+            {startTime: 15, pitch: 4},
+        ]
+    },
+    {
+        ID: 1,
+        trackName: "Beepin' Bass",
+        sampleId: 1,
+        isRecording: false,
+        offset: 0,
+        resolution: 1,
+        repeat: 1,
+        lock: false,
+        volume: 1,
+        notes: [
+            {startTime: 0, pitch: 1},
+            {startTime: 2, pitch: 8},
+            {startTime: 4, pitch: 1},
+            {startTime: 6, pitch: 8},
+            {startTime: 8, pitch: 1},
+            {startTime: 10, pitch: 8},
+            {startTime: 12, pitch: 1},
+            {startTime: 14, pitch: 8},
+
+            {startTime: 16, pitch: 4},
+            {startTime: 18, pitch: 11},
+            {startTime: 20, pitch: 4},
+            {startTime: 22, pitch: 11},
+            {startTime: 24, pitch: 4},
+            {startTime: 26, pitch: 11},
+            {startTime: 28, pitch: 4},
+            {startTime: 30, pitch: 11},
+
+            {startTime: 32, pitch: 0},
+            {startTime: 34, pitch: 7},
+            {startTime: 36, pitch: 0},
+            {startTime: 38, pitch: 7},
+            {startTime: 40, pitch: 0},
+            {startTime: 42, pitch: 7},
+            {startTime: 44, pitch: 0},
+            {startTime: 46, pitch: 7},
+
+            {startTime: 48, pitch: 2},
+            {startTime: 50, pitch: 9},
+            {startTime: 52, pitch: 2},
+            {startTime: 54, pitch: 9},
+            {startTime: 56, pitch: 2},
+            {startTime: 58, pitch: 9},
+            {startTime: 60, pitch: 2},
+            {startTime: 62, pitch: 9},
+        ]
+    },
+    {
+        ID: 2,
+        trackName: "Sweet Synth",
+        sampleId: 3,
+        isRecording: false,
+        offset: 0,
+        resolution: 1,
+        repeat: 1,
+        lock: false,
+        volume: 1,
+        notes: [
+            /*Chord 1 */
+            {startTime: 0, pitch: 1},
+            {startTime: 0, pitch: 3},
+            {startTime: 0, pitch: 8},
+
+            {startTime: 4, pitch: 1},
+            {startTime: 4, pitch: 3},
+            {startTime: 4, pitch: 8},
+
+            {startTime: 8, pitch: 1},
+            {startTime: 8, pitch: 3},
+            {startTime: 8, pitch: 8},
+
+            {startTime: 12, pitch: 1},
+            {startTime: 12, pitch: 3},
+            {startTime: 12, pitch: 8},
+
+            /*Chord 2 */
+            {startTime: 16, pitch: 1},
+            {startTime: 16, pitch: 4},
+            {startTime: 16, pitch: 8},
+
+            {startTime: 20, pitch: 1},
+            {startTime: 20, pitch: 4},
+            {startTime: 20, pitch: 8},
+
+            {startTime: 24, pitch: 1},
+            {startTime: 24, pitch: 4},
+            {startTime: 24, pitch: 8},
+
+            {startTime: 28, pitch: 1},
+            {startTime: 28, pitch: 4},
+            {startTime: 28, pitch: 8},
+
+            /*Chord 3 */
+            {startTime: 32, pitch: 0},
+            {startTime: 32, pitch: 4},
+            {startTime: 32, pitch: 6.5},
+
+            {startTime: 36, pitch: 0},
+            {startTime: 36, pitch: 4},
+            {startTime: 36, pitch: 6.5},
+
+            {startTime: 40, pitch: 0},
+            {startTime: 40, pitch: 4},
+            {startTime: 40, pitch: 6.5},
+
+            {startTime: 44, pitch: 0},
+            {startTime: 44, pitch: 4},
+            {startTime: 44, pitch: 6.5},
+
+            /*Chord 4 */
+            {startTime: 48, pitch: -2},
+            {startTime: 48, pitch: 2},
+            {startTime: 48, pitch: 5},
+
+            {startTime: 52, pitch: -2},
+            {startTime: 52, pitch: 2},
+            {startTime: 52, pitch: 5},
+
+            {startTime: 56, pitch: -2},
+            {startTime: 56, pitch: 2},
+            {startTime: 56, pitch: 5},
+
+            {startTime: 60, pitch: -2},
+            {startTime: 60, pitch: 2},
+            {startTime: 60, pitch: 5},
+        ]
+    },
+    {
+        ID: 3,
+        trackName: "Melody",
+        sampleId: 4,
+        isRecording: false,
+        offset: 0,
+        resolution: 1,
+        repeat: 0,
+        lock: false,
+        volume: 1.3,
+        notes: [
+            /*Chord 1 */
+            {startTime: 0, pitch: 2},
+
+            {startTime: 16, pitch: 4},
+            {startTime: 28, pitch: 3},
+            {startTime: 30, pitch: 2},
+
+            {startTime: 32, pitch: 0},
+            {startTime: 44, pitch: 3},
+            {startTime: 46, pitch: 2},
+
+            {startTime: 48, pitch: 0},
+
+
+            {startTime: 64, pitch: 2},
+
+            {startTime: 80, pitch: 1},
+            {startTime: 92, pitch: 2},
+            {startTime: 94, pitch: 3},
+
+            {startTime: 96, pitch: 0},
+            {startTime: 100, pitch: 2},
+            {startTime: 104, pitch: 4},
+            {startTime: 108, pitch: 2},
+
+            {startTime: 112, pitch: 4},
+            {startTime: 116, pitch: 4},
+            {startTime: 120, pitch: 4},
+            {startTime: 122, pitch: 3},
+            {startTime: 124, pitch: 2},
+            {startTime: 126, pitch: 3},
+        ]
+    }
+];
 var bodyParser = require('body-parser');
 
 

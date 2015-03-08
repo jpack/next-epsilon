@@ -39,6 +39,6 @@
 
 <div class="sequencer-row text-center" ng-repeat="pitch in measure" ng-init="index = $index"  ng-class="{enter:enter, oddRow: $odd, evenRow: $even}">
     <button class="sequencer-button" ng-repeat="note in measure[index] track by $index"
-            ng-click="note.active = !note.active" ng-class="{bright: note.active}">
+            ng-click="note.active = !note.active" ng-class="{bright: note.active, upbeat: $index%8 > 3}">
     </button>
 </div>
