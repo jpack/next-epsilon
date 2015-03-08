@@ -41,9 +41,7 @@
 
 					frameStartTime = dateTime.getTime(),
 					frameCurrentTime = dateTime.getTime(),
-					
-					mouseX = 0, mouseY = 0,					
-					cameraAngle = 0,
+
 					RAD = 180 / 3.14159265,
 					fps = 0,
 					frames = 0,
@@ -189,12 +187,7 @@
 					scene.add( particle );
 				}
 
-				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-				document.addEventListener( 'mousedown', onDocumentMouseDown, false )
-				document.addEventListener( 'touchstart', onDocumentTouchStart, false );
-				document.addEventListener( 'touchmove', onDocumentTouchMove, false );
-
-				//
+				document.addEventListener( 'mousedown', onDocumentMouseDown, false );
 
 				window.addEventListener( 'resize', onWindowResize, false );
 
@@ -223,38 +216,6 @@
 				if (starPos > maxZoom) {
 					starPos = maxZoom;
 				}								
-			}
-
-			function onDocumentMouseMove(event) {
-
-				//mouseX = event.clientX - windowHalfX;
-				//mouseY = event.clientY - windowHalfY;
-			}
-
-			function onDocumentTouchStart( event ) {
-
-				if ( event.touches.length > 1 ) {
-
-					event.preventDefault();
-
-					mouseX = event.touches[ 0 ].pageX - windowHalfX;
-					mouseY = event.touches[ 0 ].pageY - windowHalfY;
-
-				}
-
-			}
-
-			function onDocumentTouchMove( event ) {
-
-				if ( event.touches.length == 1 ) {
-
-					event.preventDefault();
-
-					mouseX = event.touches[ 0 ].pageX - windowHalfX;
-					mouseY = event.touches[ 0 ].pageY - windowHalfY;
-
-				}
-
 			}
 
 			function initParticle( particle, delay ) {
@@ -339,9 +300,6 @@
 				starX += rotationSpeed;
     			starY += rotationSpeed;
     			starZ += rotationSpeed;
-    			var newEuler = new THREE.Euler(starX, starY, starZ, 'XYZ');
-    			//var newAngle = new THREE.Vector3(starX, starY, starZ);
-    			//newAngle.applyEuler(newEuler);
 
     			star.rotation.set(starX, starY, starZ);
 
@@ -356,9 +314,6 @@
 
 				TWEEN.update();
 
-				//camera.position.x += ( mouseX - camera.position.x ) * .05;
-				//camera.position.y += ( - mouseY + 200 - camera.position.y ) * .05;
-
 				frames += 1;
 				var dateTime = new Date();
 
@@ -370,20 +325,9 @@
 					frameStartTime = dateTime.getTime();
 				}				
 
-				cameraAngle += 2.5 / fps;
-				if (cameraAngle >= 360) {
-					cameraAngle -= 360;
-				}
-
-				
-
 				camera.lookAt( scene.position );
 
-				//renderer.clear();
-				//renderer.render( background, camera );
-				//renderer.clearDepth();
 				renderer.render( scene, camera );
-
 			}
 
 			function rgbToHtml(red, green, blue)
