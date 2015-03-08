@@ -53,6 +53,7 @@
 					retractAmount = 5000,
 					maxZoom = 0,
 					minZoom = -3000,
+					rotationSpeed = 0.05,
 
 					windowHalfX = window.innerWidth / 2,
 					windowHalfY = window.innerHeight / 2,
@@ -335,9 +336,9 @@
 					starPos = minZoom;
 				}
 
-				starX += .1;
-    			starY += .1;
-    			starZ += .1;
+				starX += rotationSpeed;
+    			starY += rotationSpeed;
+    			starZ += rotationSpeed;
     			var newEuler = new THREE.Euler(starX, starY, starZ, 'XYZ');
     			//var newAngle = new THREE.Vector3(starX, starY, starZ);
     			//newAngle.applyEuler(newEuler);
