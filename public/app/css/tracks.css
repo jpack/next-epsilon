@@ -80,6 +80,31 @@
     bottom: 30px;
     left: -100px;
 }
+
+.livebtn {
+    box-shadow: 2px 2px 5px gray;
+    background-color: #b380ff;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 110px;
+    left: -100px;
+}
+
+.livebtn.enter {
+    left: 30px;
+    transition: left .5s;
+    transition-timing-function: ease;
+}
+
+.livebtn h1 {
+    color: white;
+    text-align: center;
+    margin: 0px;
+    margin-top: 10px;
+}
+
 .addbtn h1 {
     color: white;
     text-align: center;
