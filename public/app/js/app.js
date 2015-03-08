@@ -31,4 +31,6 @@ nextEpsilon.directive("ngMobileClick", [function () {
             scope.$apply(attrs["ngMobileClick"]);
         });
     }
-}])
+}]);
+
+window.trackId = 0;
